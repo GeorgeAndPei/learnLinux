@@ -1,0 +1,138 @@
+常见常用的linux命令
+一，文件处理命令
+	ls -l/-a 目录
+		-a显示所有文件，包含隐藏
+		-l显示详细
+		-d查看目录的属性
+		-h人性化大小显示
+	ls -l时前面字母的意义：
+	-文件,l软连接,d目录
+	所有者权限user，所属组权限group，其他者权限other
+	r:read=4
+	w:write=2
+	x:execute=1
+mkdir
+rmdir
+cp -r复制目录
+   -p保留文件属性
+mv
+rm -r删除目录
+   -f强制执行
+touch
+cat -n显示行号
+tac 反向显示cat
+more 分页显示文件
+less 分页显示，可向上翻页
+head/tail -数字 显示文件前或后多少行
+tail -f 动态显示文件末尾内容， 监控日志命令
+ln -s 创建软连接（快接方式）
+二，权限管理命令
+chmod -R 递归修改 修改权限
+chown 修改所有者，只有root可改
+chgrp 修改文件所属组，只有root可改
+umask 查看新建文件或目录的默认权限
+三，文件搜索命令
+find [范围] [选项] [匹配条件]
+	-name 文件名查找
+	-iname 不区分大小写
+	-size +-n 大于或小于n的文件
+	-user 文件所有者
+	-group 所属组
+	-cmin -5 5分钟内被修改过属性的文件或目录
+	-amin -5 5分钟内被访问过的
+	-mmin -5 5分钟内文件内容被改过
+find 多条件查找
+find /etc -name inittab -exec ls -l {}\;
+在/etc下查找inittab文件并执行ls -l命令：-exec 命令 {}\; 固定格式
+	-type 文件类型 -f 文件 -d目录 -l链接
+	-inum 根据i节点查找
+locate 速度非常快，需要locate命令包，在updatedb中查找
+	tmp中的文件无法查找
+	-i不区分大小写选项
+which 搜索命令所在目录及别名信息，绝对路径
+whereis 搜索命令所在目录及帮助文档路径
+grep -iv 指定字符串 文件
+在文件中查找字符串匹配的行并输出
+四，帮助命令
+man 命令
+命令 --help简要显示帮助文档
+help 命令，显示shell内置命令
+whatis 
+apropos 配置文件 的帮助
+五，用户管理命令
+useradd
+passwd
+who/w   tty本地用户
+		pts远程用户
+uptime服务器运行时间
+六，压缩解压命令
+.gz
+gzip gunzip
+.tar.gz
+tar [选项] [打包压缩后的文件名] [目录] 打包目录
+	-c打包
+	-v显示详细
+	-f指定文件名
+	-z打包时压缩
+	-x解包
+.zip
+zip unzip
+.bz2
+bzip2 大压缩比
+与tar配合生成.tar.bz2
+bunzip2解压
+七，网络命令
+write 用户名
+ctrl+D保存发送
+wall给所有在线用户发信 用于广播
+ping
+ifconfig
+mail 用户名，给用户发邮件
+last 查看最近用户登录信息及重启信息
+lastlog 用户最后一次登录的信息
+lastlog -u 用户uid 查看该用户
+traceroute 目标ip网站 追踪节点访问路径
+netstat -t TCP协议
+		-U upp协议
+		-l 监听
+		-r 路由
+		-n 显示ip地址和端口号
+例：netstat -tlun 查看本机监听端口
+			-an 查看本机所有网络端口
+			-rn 查看本机路由表
+setup （redhat专用）简易界面配置
+service network restart重启网络工具
+
+mount 挂载
+umount 卸载
+八，关机重启命令
+shutdown -r重启 now现在或指定时间
+		-h halt关机
+		-c 取消前一个关机命令
+runlevel查询系统运行级别inittab文件
+init	0-关机
+		1-单用户
+		2-不完全单用户，不含NFC服务，网络文件系统
+		3-完全多用户
+		4-未分配
+		5-图形界面
+		6-重启
+logout退出登录
+九，rpm包命令
+十，文件系统命令
+df磁盘信息
+du
+fsck不用，系统自动运行
+dumpe2fs 显示快大小数量
+文件手工分区命令
+fdisk -l 查看个盘
+fdisk /dev/sdb（新硬盘名称） 进行对新盘分区
+partprobe 分区后保存时强制执行，强制读分区表
+格式化
+mkfs -t ext4 目标分区
+建立挂载点
+自动挂载配置文件：/etc/fstab 重要系统文件
+				修改后需立即执行mount -a自动挂载，不报错才可以
+mount -o remount, rw /目录 重挂载修改权限
+dump备份命令
+
