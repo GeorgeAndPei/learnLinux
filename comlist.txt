@@ -290,9 +290,28 @@ rsyslogd日志服务
 日志文件的命名规则：配置文件中加入dateext参数，则日志会用日期来作为日志文件的后缀
 日志规则的配置文件：/etc/logrotate.conf
 
+启动管理
+1，运行级别
+2，系统启动过程
+	BIOS-加载-MDR-加载MDR中启动引导程序
+	单系统直接启动-加载内核-
+	多系统调用选择-加载选择的系统的内核-
+	内核解压并自检-搜索找到initranfs-建立仿真根目录-加载驱动-挂在真正系统根目录-调用/sbin/init-调用/etc/init/rcS.conf-调用-
+	/etc/rc.d/rc.sysinit-系统初始化
+	/etc/inittab-传入运行级别-/etc/init/rc.conf-调用-/etc/rc.d/rc-
+	按照运行级别调用-etc/rc[0-6].d-按照优先级启动和关闭相应脚本-启动和关闭-/etc/rc.d/rc.local中程序-登录界面-输入用户名和密码-进入系统
 
-		
+grub配置文件
+grub中分区名的表示hd(0,1)
 
+系统修复模式
+1，单用户模式
+	进入单用户模式，修改遗忘root密码
+	修改系统默认运行级别
+2，光盘修复模式
+	进入安全模式后，开启bash
+	使用chroot /mnt/sysimage改变成硬盘根目录后进行操作
+	
 
 
 
