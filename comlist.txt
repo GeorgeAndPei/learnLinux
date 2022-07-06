@@ -372,6 +372,33 @@ test 命令
 判断1 -o 判断2 逻辑或
 !判断1 逻辑非
 
+if语句：中括号前后空格，与test一致，其实就是test语句
+单分支
+if [ 条件判断式 ]; then
+	程序
+fi
+
+if [ 条件判断式 ]
+	then
+		程序
+fi
+多分支
+if [ 条件 1 ]
+	then
+		命令1
+	else
+		命令2
+fi
+
+标称shell语言(不是注释)：
+	#!/bin/bash
+
+多分支if语句的使用：判断分区使用率
+多分支if语句使用：备份mysql数据库
+				判断apache服务是否启动
+				port=$(nmap -sT 服务器ip | grep tcp | grep http | awk '{print $2}')
+
+配合定时执行命令，定期备份或检测
 
 
 
