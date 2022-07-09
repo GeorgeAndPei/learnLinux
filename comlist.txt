@@ -389,6 +389,22 @@ if [ 条件 1 ]
 	else
 		命令2
 fi
+多分支
+if 
+	then
+
+elif
+		
+	then
+	exit 数字----定义返回值
+
+elif 
+	then
+
+else
+
+fi
+
 
 标称shell语言(不是注释)：
 	#!/bin/bash
@@ -400,7 +416,14 @@ fi
 
 配合定时执行命令，定期备份或检测
 
-
-
+case $变量名 in
+	"值1"
+		命令
+		;;
+	"值2"
+		命令
+		;;
+esac
+用于打印输出列表
 
 
