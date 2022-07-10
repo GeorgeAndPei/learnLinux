@@ -457,8 +457,19 @@ for((i=1;i<=100;i=i+1))
 	done
 echo "The sum of 1+2+3+...+100 is $s."
 
+wihle循环与until循环
+语法：条件成立，进入循环
+while [ 条件判断式 ]
+	do
+		程序
+	done
 
-
+until循环语法,与while循环正相反，条件不成立则进循环
+语法：
+until [ 条件判断式 ]
+	do
+		程序
+	done
 
 
 
